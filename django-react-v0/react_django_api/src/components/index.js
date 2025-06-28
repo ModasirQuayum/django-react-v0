@@ -5,6 +5,8 @@ import Logout from "./Logout"
 import Signup from "./Signup"
 import Protected from "./ProtectedRoute"
 import Dashboard from "./Dashboard"
+import PublicRoute from "./PublicRoute"
+import CreateProduct from "./CreateProduct"
 export {
     Header,
     Input,
@@ -12,5 +14,7 @@ export {
     Login,
     Logout,
     Signup,
-    Dashboard
+    Dashboard,
+    PublicRoute,
+    CreateProduct,
 }

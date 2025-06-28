@@ -8,6 +8,11 @@ import Login from './pages/Login.jsx'
 import { Provider } from 'react-redux'
 import Dashboard from './pages/Dashboard.jsx'
 import Protected from './components/ProtectedRoute.jsx'
+import PublicRoute from './components/PublicRoute.jsx'
+import ProductGeneration from './pages/ProductGeneration.jsx'
+import ProductDetail from './pages/ProductDetail.jsx'
+import Signup from './pages/Signup.jsx'
+
 
 
 const router = createBrowserRouter([
@@ -17,7 +22,19 @@ const router = createBrowserRouter([
     children:[
       {
         path: "/login",
-        element: <Login />
+        element: (
+          <PublicRoute>
+          <Login />
+          </PublicRoute>
+        )
+      },
+      {
+        path: "/signup",
+        element: (
+          <PublicRoute>
+          <Signup />
+          </PublicRoute>
+        )
       },
       {
         path: "/dashboard",
@@ -26,7 +43,23 @@ const router = createBrowserRouter([
           <Dashboard />
          </Protected> 
         )
-      }
+      },
+      {
+        path: "/create-product",
+        element: (
+         <Protected>
+          <ProductGeneration />
+         </Protected> 
+        )
+      },
+      {
+        path: "/product-detail/:productId",
+        element: (
+         <Protected>
+          <ProductDetail />
+         </Protected> 
+        )
+      },
     ]
   }
 ])

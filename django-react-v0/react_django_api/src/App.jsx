@@ -1,18 +1,22 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import authService from './api/auth'
 import apiUrl from './config/config'
 import { ACCESS_TOKEN } from './constants'
-import { Outlet } from 'react-router'
+import { Outlet} from 'react-router'
+import ProgressBar from './components/ProgressBar'
+
 
 
 
 function App() {
-
+;
 
 
   return (
-    <div className='min-h-screen flex flex-wrap content-between bg-gray-200'>
-      <div className="w-full block">
+    <>
+    <ProgressBar />
+    <div className='min-h-screen flex flex-wrap content-between bg-white'>
+      <div className="w-full block"> 
         <main>
           <Outlet />
         </main>
@@ -29,6 +33,7 @@ function App() {
       <button type="submit" className='px-2 py-1 bg-indigo-500 text-gray-200 cursor-pointer'>submit</button>
     </form> */}
     </div>
+    </>
   )
 }
 

@@ -40,6 +40,7 @@ function Login() {
                   </h1>
                   <form  className="space-y-4 md:space-y-6" onSubmit={handleSubmit(login)}>
                       <Input
+                        field_tag="input"
                         label="Username"
                         type="text"
                         id="username"
@@ -47,6 +48,7 @@ function Login() {
 
                       />
                       <Input
+                        field_tag="input"
                         label="Password"
                         type="password"
                         id="password"

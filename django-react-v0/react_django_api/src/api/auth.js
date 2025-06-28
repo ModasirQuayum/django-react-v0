@@ -15,7 +15,18 @@ export class AuthService{
         },(error)=>{
             return Promise.reject(error)
         }
-    );
+        );
+
+        this.client.interceptors.response.use((response)=>response,
+        (error) => {
+            if(error.response.status==401){
+                alert("Token expired")
+                this.logout()
+                window.location.reload();
+            }
+            return Promise.reject(error)
+        }
+        )
     }
     async getRefreshToken(){
         const refreshToken = localStorage.getItem(REFRESH_TOKEN)
@@ -65,9 +76,9 @@ export class AuthService{
             }
         }
     }
-    async signup(route,username,password){
+    async signup(route,username,email,password,password2){
        try {
-        const response = await this.client.post(route,{username,password})
+        const response = await this.client.post(route,{username,email,password,password2})
         console.log(response.data)
        } catch (error) {
             if (error.response) {

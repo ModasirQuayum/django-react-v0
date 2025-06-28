@@ -8,6 +8,7 @@ from .serializers import ProductPromptSerializers
 from .models import ProductPrompt
 from rest_framework.permissions import IsAuthenticated
 from .utils import generate_product_listing
+from django.shortcuts import get_object_or_404
 
 @api_view(['POST'])
 @parser_classes([MultiPartParser, FormParser])
@@ -19,7 +20,9 @@ def generate_product(request):
         validated_data = serializer.validated_data
         text_inputs = [
             validated_data.get('title', ''),
-            validated_data.get('description', '')
+            validated_data.get('brand_name', ''),
+            validated_data.get('platform', ''),
+            validated_data.get('description', ''),
         ]
 
         try:
@@ -29,6 +32,8 @@ def generate_product(request):
             # Save to DB
             product = ProductPrompt.objects.create(
                 title=data['title'],
+                brand_name=data['brand_name'],
+                platform=data['platform'],
                 description=data['description'],
                 user=request.user
             )
@@ -47,7 +52,14 @@ def generate_product(request):
 @permission_classes([IsAuthenticated])
 def listed_product(request):
     
-    product=ProductPrompt.objects.filter(user=request.user)
+    product=ProductPrompt.objects.filter(user=request.user).order_by('-id')
     serializer = ProductPromptSerializers(product,many=True)
 
     return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def product_detail(request,pk):
+    product = get_object_or_404(ProductPrompt,pk=pk,user=request.user)
+    serializer = ProductPromptSerializers(product)
+    return Response(serializer.data,status=status.HTTP_200_OK)

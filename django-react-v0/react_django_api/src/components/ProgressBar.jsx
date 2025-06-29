@@ -14,7 +14,7 @@ const ProgressBar = () => {
     // Simulate delay (optional: useful for dev)
     const timeout = setTimeout(() => {
       NProgress.done();
-    }, 300); // adjust timing as needed
+    }, 600); // adjust timing as needed
 
     return () => clearTimeout(timeout);
   }, [location]);

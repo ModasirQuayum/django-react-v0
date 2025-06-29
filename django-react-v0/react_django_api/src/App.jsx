@@ -1,7 +1,4 @@
 import { useEffect, useState } from 'react'
-import authService from './api/auth'
-import apiUrl from './config/config'
-import { ACCESS_TOKEN } from './constants'
 import { Outlet} from 'react-router'
 import ProgressBar from './components/ProgressBar'
 
@@ -9,12 +6,9 @@ import ProgressBar from './components/ProgressBar'
 
 
 function App() {
-;
-
-
+ 
   return (
     <>
-    <ProgressBar />
     <div className='min-h-screen flex flex-wrap content-between bg-white'>
       <div className="w-full block"> 
         <main>
@@ -33,6 +27,8 @@ function App() {
       <button type="submit" className='px-2 py-1 bg-indigo-500 text-gray-200 cursor-pointer'>submit</button>
     </form> */}
     </div>
+    
+    
     </>
   )
 }

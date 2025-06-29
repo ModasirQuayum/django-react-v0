@@ -48,7 +48,7 @@ const CreateProduct = () => {
                         label="Brand Name"
                         type="text"
                         id="brand_name"
-                        {...register("brand_name",{required:true})}
+                        {...register("brand_name",{required:false})}
                       />
                       <Controller
                         control={control}

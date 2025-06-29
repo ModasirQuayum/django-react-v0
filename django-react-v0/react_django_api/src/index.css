@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@layer base{
+    #nprogress .bar {
+    background: #0d0d38 !important;
+    height: 3px !important;
+    }
+    #nprogress .spinner{
+        display: none !important;
+    }
+}

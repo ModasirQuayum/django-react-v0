@@ -2,6 +2,8 @@ from datetime import timedelta
 from pathlib import Path
 from decouple import config
 import os
+
+environment = config('ENVIRONMENT',default='production')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -10,10 +12,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-a%z_^p0!3g#(h*0kv=ss(bq$62-!shrx8!bu(e^8bkuahykp^)'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+if environment == 'development':
+    DEBUG = True
+else :
+    DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -27,7 +33,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=40),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
 

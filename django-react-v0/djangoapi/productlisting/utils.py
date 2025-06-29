@@ -23,6 +23,7 @@ def generate_product_listing(text_inputs):
     "  - Keep the title **under 200 characters**, including spaces.\n"
     "  - Format = **Brand + Product Type + Key Features + Specs/Variant (Optional)**\n"
     "  - Use **Title Case**.\n"
+    "  - Brand Name is which brand the product belongs to not users own brand**.\n"
     "  - 5 bullet points under 'About this item\n"
     "  - Avoid forbidden characters or terms (e.g., “#1”, “Free”, “Best Seller”).\n"
     "  - Do **not** repeat keywords unnecessarily.\n"

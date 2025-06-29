@@ -31,10 +31,10 @@ def generate_product(request):
 
             # Save to DB
             product = ProductPrompt.objects.create(
-                title=data['title'],
-                brand_name=data['brand_name'],
-                platform=data['platform'],
-                description=data['description'],
+                title=data.get('title', ''),
+                brand_name=data.get('brand_name', ''),
+                platform=data.get('platform', ''),
+                description=data.get('description', ''),
                 user=request.user
             )
 
